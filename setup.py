@@ -5,13 +5,13 @@ from setuptools import setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setup(name='pipelinewise-transform-field',
+setup(name='pathmate-transform-field',
       version='2.3.0',
       description='Singer.io simple field transformer between taps and targets - PipelineWise compatible',
       long_description=long_description,
       long_description_content_type='text/markdown',
       author="Wise",
-      url='https://github.com/transferwise/pipelinewise-transform-field',
+      url='https://github.com/pm-rueegger/pathmate-transform-field',
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
           'Environment :: Console',
@@ -22,8 +22,8 @@ setup(name='pipelinewise-transform-field',
       ],
       py_modules=['transform_field'],
       install_requires=[
-          'pipelinewise-singer-python==1.*',
-          'dpath==2.0.*',
+          'pipelinewise-singer-python==1.3.0',
+          'dpath==2.0.8',
       ],
       extras_require={
           'test': [
