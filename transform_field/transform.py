@@ -2,7 +2,7 @@ import hashlib
 import re
 
 from typing import Dict, Any, Optional, List
-from dpath.util import get as get_xpath, set as set_xpath
+from dpath.util import get as get_xpath, set as set_xpath, search as search_xpath
 from singer import get_logger
 from dateutil import parser
 
@@ -123,8 +123,8 @@ def do_transform(record: Dict,
             if isinstance(value, dict) and field_paths:
                 for field_path in field_paths:
                     try:
-                        field_val = get_xpath(value, field_path)
-                        set_xpath(value, field_path, _transform_value(field_val, trans_type))
+                        for matched_path, field_val in search_xpath(value, field_path, yielded=True):
+                            set_xpath(value, matched_path, _transform_value(field_val, trans_type))
                     except KeyError:
                         LOGGER.debug('Field path %s does not exist', field_path)
 
